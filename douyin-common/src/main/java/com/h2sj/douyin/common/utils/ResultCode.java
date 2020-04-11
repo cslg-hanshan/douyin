@@ -7,7 +7,8 @@ public enum  ResultCode {
     SQLDELETEERROR(1001,"数据库删除错误"),
     SQLUPDATEERROR(1002,"数据库修改错误"),
     SQLSELECTERROR(1003,"数据库查询错误"),
-    FILEUPLOADERROR(2000,"文件上传失败");
+    FILEUPLOADERROR(2000,"文件上传失败"),
+    BADCREDENTIALS(403,"身份验证失败");
 
     Integer code;
     String info;

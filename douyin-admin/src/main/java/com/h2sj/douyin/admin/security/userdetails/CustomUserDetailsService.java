@@ -33,23 +33,29 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Member memberExample = new Member();
-        memberExample.setMUsername(s);
-        Member member = memberService.findOne(memberExample);
+        try {
+            Member memberExample = new Member();
+            memberExample.setMUsername(s);
+            Member member = memberService.findOne(memberExample);
 
-        //初始授权列表
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
+            //初始授权列表
+            Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-        if (member == null) throw new UsernameNotFoundException("username not found");
-        if (member.getRId() == null)
+            if (member == null) throw new UsernameNotFoundException("username not found");
+            if (member.getRId() == null)
+                return User.builder().username(member.getMUsername()).password(member.getMPassword()).authorities(authorities).build();
+            Role role = roleService.findOneById(member.getRId());
+            authorities.add(new SimpleGrantedAuthority(role.getRName()));
+
+            List<Permission> permissions = permissionService.findListByRid(role.getRId());
+            for (Permission permission:permissions)
+                authorities.add(new SimpleGrantedAuthority(permission.getPName()));
+
             return User.builder().username(member.getMUsername()).password(member.getMPassword()).authorities(authorities).build();
-        Role role = roleService.findOneById(member.getRId());
-        authorities.add(new SimpleGrantedAuthority(role.getRName()));
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            throw new UsernameNotFoundException("username not found");
+        }
 
-        List<Permission> permissions = permissionService.findListByRid(role.getRId());
-        for (Permission permission:permissions)
-            authorities.add(new SimpleGrantedAuthority(permission.getPName()));
-
-        return User.builder().username(member.getMUsername()).password(member.getMPassword()).authorities(authorities).build();
     }
 }
