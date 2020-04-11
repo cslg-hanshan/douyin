@@ -1,6 +1,7 @@
 package com.h2sj.douyin.admin.controller;
 
 import com.h2sj.douyin.admin.service.RoleService;
+import com.h2sj.douyin.admin.service.impl.RoleServiceImpl;
 import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
 import com.h2sj.douyin.domain.entity.Role;
@@ -13,16 +14,14 @@ import java.util.List;
 public class RoleController {
 
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
 
     @PostMapping(value = "/role",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody Role role){
         try {
-            if (roleService.save(role) != null){
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLINSERTERROR);
-            }
+            System.out.println(role);
+            roleService.save(role);
+            return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLINSERTERROR);

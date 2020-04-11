@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="53b445c8-00fa-485b-8d84-6f78d88051c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/filter/JWTAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/filter/JWTAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/userdetails/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/userdetails/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-common/src/main/java/com/h2sj/douyin/common/utils/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-common/src/main/java/com/h2sj/douyin/common/utils/ResultCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/runner/DatabaseRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/runner/DatabaseRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/douyin-common/src/main/java/com/h2sj/douyin/common/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-common/src/main/java/com/h2sj/douyin/common/utils/DateUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586578799509</updated>
-      <workItem from="1586578800810" duration="16659000" />
+      <workItem from="1586578800810" duration="19539000" />
     </task>
     <servers />
   </component>

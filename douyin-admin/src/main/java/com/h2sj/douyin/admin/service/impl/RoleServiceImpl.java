@@ -3,6 +3,7 @@ package com.h2sj.douyin.admin.service.impl;
 import com.h2sj.douyin.admin.service.RoleService;
 import com.h2sj.douyin.domain.entity.Role;
 import com.h2sj.douyin.domain.repository.RoleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Service
 public class RoleServiceImpl implements RoleService {
 
+    @Autowired
     private RoleRepository repository;
 
     @Transactional

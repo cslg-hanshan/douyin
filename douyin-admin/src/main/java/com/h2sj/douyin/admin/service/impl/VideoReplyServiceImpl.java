@@ -3,6 +3,7 @@ package com.h2sj.douyin.admin.service.impl;
 import com.h2sj.douyin.admin.service.VideoReplyService;
 import com.h2sj.douyin.domain.entity.VideoReply;
 import com.h2sj.douyin.domain.repository.VideoReplyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @Service
 public class VideoReplyServiceImpl implements VideoReplyService {
 
+    @Autowired
     private VideoReplyRepository repository;
 
     @Transactional

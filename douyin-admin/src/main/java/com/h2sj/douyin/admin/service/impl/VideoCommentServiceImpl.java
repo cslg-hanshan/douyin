@@ -3,6 +3,7 @@ package com.h2sj.douyin.admin.service.impl;
 import com.h2sj.douyin.admin.service.VideoCommentService;
 import com.h2sj.douyin.domain.entity.VideoComment;
 import com.h2sj.douyin.domain.repository.VideoCommentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @Service
 public class VideoCommentServiceImpl implements VideoCommentService {
 
+    @Autowired
     private VideoCommentRepository repository;
 
     @Transactional

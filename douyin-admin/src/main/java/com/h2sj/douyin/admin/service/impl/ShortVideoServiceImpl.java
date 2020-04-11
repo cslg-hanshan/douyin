@@ -1,7 +1,6 @@
 package com.h2sj.douyin.admin.service.impl;
 
 import com.h2sj.douyin.admin.service.ShortVideoService;
-import com.h2sj.douyin.domain.entity.Member;
 import com.h2sj.douyin.domain.entity.ShortVideo;
 import com.h2sj.douyin.domain.repository.ShortVideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
