@@ -1,22 +1,18 @@
 package com.h2sj.douyin.admin.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.h2sj.douyin.admin.controller.base.BaseController;
 import com.h2sj.douyin.admin.service.MemberService;
 import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
 import com.h2sj.douyin.domain.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Serializable;
 
 @RestController
-public class MemberController implements BaseController<Member> {
+public class MemberController {
 
     @Autowired
     private MemberService memberService;
@@ -29,7 +25,7 @@ public class MemberController implements BaseController<Member> {
     public Result save(@RequestBody Member member){
         try {
             member.setMPassword(encoder.encode(member.getMPassword()));
-            if (memberService.save(member)){
+            if (memberService.save(member) != null){
                 return Result.success();
             }else {
                 return Result.failed(ResultCode.SQLINSERTERROR);
@@ -41,13 +37,10 @@ public class MemberController implements BaseController<Member> {
     }
 
     @DeleteMapping(value = "/member/{id}",produces = "application/json; charset=utf-8")
-    public Result delete(@PathVariable("id") Serializable id){
+    public Result delete(@PathVariable("id") Long id){
         try {
-            if (memberService.removeById(id)) {
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLDELETEERROR);
-            }
+            memberService.deleteById(id);
+            return Result.success();
         }catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLDELETEERROR);
@@ -57,11 +50,7 @@ public class MemberController implements BaseController<Member> {
     @PutMapping(value = "/member",produces = "application/json; charset=utf-8")
     public Result update(@RequestBody Member member){
         try {
-            member.setMPassword(encoder.encode(member.getMPassword()));
-            UpdateWrapper<Member> wrapper = new UpdateWrapper<>();
-            wrapper.lambda().eq(Member::getMId,member.getMId());
-
-            if (memberService.update(member,wrapper)){
+            if (memberService.update(member) != null){
                 return Result.success();
             }else {
                 return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -74,9 +63,9 @@ public class MemberController implements BaseController<Member> {
 
 //    @PreAuthorize("hasRole('USER')")
     @GetMapping(value = "/member/{id}",produces = "application/json; charset=utf-8")
-    public Result findOne(@PathVariable("id") Serializable id){
+    public Result findOne(@PathVariable("id") Long id){
         try {
-            Member member = memberService.getById(id);
+            Member member = memberService.findOneById(id);
             return Result.success(member);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -88,40 +77,14 @@ public class MemberController implements BaseController<Member> {
     @GetMapping(value = "/members",produces = "application/json; charset=utf-8")
     public Result findPages(
             @RequestParam(value = "keyword",required = false) String keyword,
-            @RequestParam(value = "page",required = false,defaultValue = "1") Long page,
-            @RequestParam(value = "limit",required = false,defaultValue = "20") Long limit,
-            @RequestParam(value = "orderby",required = false) String orderby
+            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
+            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
+            @RequestParam(value = "span",required = false) String span
     ){
         try {
-            Page<Member> pager = new Page<>(page,limit);
-            QueryWrapper<Member> wrapper = new QueryWrapper<>();
-            if (orderby != null){
-                String[] split = orderby.split(",");
-                if (split[1].toLowerCase().equals("desc"))
-                    wrapper.orderByDesc(split[0]);
-                else
-                    wrapper.orderByAsc(split[0]);
-            }
-            if (keyword != null)
-                wrapper.likeRight("m_username",keyword);
-            Page<Member> pages = memberService.page(pager, wrapper);
+            Page<Member> pages = memberService.findPages(keyword, page, limit, span);
             return Result.success(pages);
         } catch (Exception ex) {
-            return Result.failed(ResultCode.SQLSELECTERROR);
-        }
-    }
-
-    @GetMapping(value = "/member")
-    public Result findOneByUsername(@RequestParam(value = "username") String username){
-        try {
-            if (username == null)
-                return Result.failed(ResultCode.SQLSELECTERROR);
-            QueryWrapper<Member> memberQueryWrapper = new QueryWrapper<>();
-            memberQueryWrapper.lambda().eq(Member::getMUsername,username);
-            Member member = memberService.getOne(memberQueryWrapper);
-            return Result.success(member);
-        } catch (Exception ex) {
-            ex.printStackTrace();
             return Result.failed(ResultCode.SQLSELECTERROR);
         }
     }

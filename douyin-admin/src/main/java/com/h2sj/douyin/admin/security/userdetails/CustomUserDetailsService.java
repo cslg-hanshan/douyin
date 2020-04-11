@@ -1,6 +1,5 @@
 package com.h2sj.douyin.admin.security.userdetails;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.h2sj.douyin.admin.service.MemberService;
 import com.h2sj.douyin.admin.service.PermissionService;
 import com.h2sj.douyin.admin.service.RoleService;
@@ -34,24 +33,23 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        QueryWrapper<Member> memberQueryWrapper = new QueryWrapper<>();
-        memberQueryWrapper.lambda().eq(Member::getMUsername,s);
-        Member member = memberService.getOne(memberQueryWrapper);
+        Member memberExample = new Member();
+        memberExample.setMUsername(s);
+        Member member = memberService.findOne(memberExample);
 
         //初始授权列表
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
         if (member == null) throw new UsernameNotFoundException("username not found");
-        Role role = roleService.getById(member.getRId());
-        if (role == null)
+        if (member.getRId() == null)
             return User.builder().username(member.getMUsername()).password(member.getMPassword()).authorities(authorities).build();
+        Role role = roleService.findOneById(member.getRId());
         authorities.add(new SimpleGrantedAuthority(role.getRName()));
 
-        List<Permission> permissions = permissionService.findListByRoleId(role.getRId());
+        List<Permission> permissions = permissionService.findListByRid(role.getRId());
         for (Permission permission:permissions)
             authorities.add(new SimpleGrantedAuthority(permission.getPName()));
 
         return User.builder().username(member.getMUsername()).password(member.getMPassword()).authorities(authorities).build();
-
     }
 }

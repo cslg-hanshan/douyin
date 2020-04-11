@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,24 +11,12 @@
         <module name="douyin-common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="douyin" target="1.8" />
-      <module name="douyin-admin" target="1.8" />
-      <module name="douyin-common" target="1.8" />
-      <module name="douyin-dependency" target="1.8" />
-      <module name="douyin-domain" target="1.8" />
-      <module name="douyin-utils" target="1.8" />
-      <module name="douyinadmin" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="douyin-admin" options="-parameters" />
       <module name="douyin-common" options="-parameters" />
-      <module name="douyin-dependency" options="-parameters" />
       <module name="douyin-domain" options="-parameters" />
-      <module name="douyin-utils" options="-parameters" />
-      <module name="douyinadmin" options="-parameters" />
     </option>
   </component>
 </project>

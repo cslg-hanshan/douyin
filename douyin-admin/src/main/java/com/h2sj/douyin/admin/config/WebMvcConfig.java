@@ -3,20 +3,21 @@ package com.h2sj.douyin.admin.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @EnableTransactionManagement
-@MapperScan(basePackages = {"com.h2sj.douyin.domain.mapper"})
+@EnableJpaRepositories(basePackages = {"com.h2sj.douyin.domain.repository"})
+@EntityScan(basePackages = {"com.h2sj.douyin.domain.entity"})
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 

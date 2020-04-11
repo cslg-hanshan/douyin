@@ -1,9 +1,5 @@
 package com.h2sj.douyin.admin.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.h2sj.douyin.admin.controller.base.BaseController;
 import com.h2sj.douyin.admin.service.PermissionService;
 import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
@@ -15,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @RestController
-public class PermissionController implements BaseController<Permission> {
+public class PermissionController {
 
     @Autowired
     private PermissionService permissionService;
@@ -23,7 +19,7 @@ public class PermissionController implements BaseController<Permission> {
     @PostMapping(value = "/permission",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody Permission permission){
         try {
-            if (permissionService.save(permission)){
+            if (permissionService.save(permission) != null){
                 return Result.success();
             }else {
                 return Result.failed(ResultCode.SQLINSERTERROR);
@@ -35,13 +31,10 @@ public class PermissionController implements BaseController<Permission> {
     }
 
     @DeleteMapping(value = "/permission/{id}",produces = "application/json; charset=utf-8")
-    public Result delete(@PathVariable("id") Serializable id){
+    public Result delete(@PathVariable("id") Long id){
         try {
-            if (permissionService.removeById(id)) {
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLDELETEERROR);
-            }
+            permissionService.deleteById(id);
+            return Result.success();
         }catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLDELETEERROR);
@@ -51,10 +44,7 @@ public class PermissionController implements BaseController<Permission> {
     @PutMapping(value = "/permission",produces = "application/json; charset=utf-8")
     public Result update(@RequestBody Permission permission){
         try {
-            UpdateWrapper<Permission> wrapper = new UpdateWrapper<>();
-            wrapper.lambda().eq(Permission::getPId,permission.getPId());
-
-            if (permissionService.update(permission,wrapper)){
+            if (permissionService.update(permission) != null){
                 return Result.success();
             }else {
                 return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -66,9 +56,9 @@ public class PermissionController implements BaseController<Permission> {
     }
 
     @GetMapping(value = "/permission/{id}",produces = "application/json; charset=utf-8")
-    public Result findOne(@PathVariable("id") Serializable id){
+    public Result findOne(@PathVariable("id") Long id){
         try {
-            Permission permission = permissionService.getById(id);
+            Permission permission = permissionService.findOneById(id);
             return Result.success(permission);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -78,26 +68,10 @@ public class PermissionController implements BaseController<Permission> {
     }
 
     @GetMapping(value = "/permissions",produces = "application/json; charset=utf-8")
-    public Result findPages(
-            @RequestParam(value = "keyword",required = false) String keyword,
-            @RequestParam(value = "page",required = false,defaultValue = "1") Long page,
-            @RequestParam(value = "limit",required = false,defaultValue = "20") Long limit,
-            @RequestParam(value = "orderby",required = false) String orderby
-    ){
+    public Result findPages(){
         try {
-            Page<Permission> pager = new Page<>(page,limit);
-            QueryWrapper<Permission> wrapper = new QueryWrapper<>();
-            if (orderby != null){
-                String[] split = orderby.split(",");
-                if (split[1].toLowerCase().equals("desc"))
-                    wrapper.orderByDesc(split[0]);
-                else
-                    wrapper.orderByAsc(split[0]);
-            }
-            if (keyword != null)
-                wrapper.likeRight("p_description",keyword);
-            Page<Permission> pages = permissionService.page(pager, wrapper);
-            return Result.success(pages);
+            List<Permission> list = permissionService.findList();
+            return Result.success(list);
         } catch (Exception ex) {
             return Result.failed(ResultCode.SQLSELECTERROR);
         }
@@ -106,7 +80,7 @@ public class PermissionController implements BaseController<Permission> {
     @GetMapping(value = "/permissions/role/{id}",produces = "application/json; charset=utf-8")
     public Result findListByRoleId(@PathVariable(value = "id") Long id){
         try {
-            List<Permission> list = permissionService.findListByRoleId(id);
+            List<Permission> list = permissionService.findListByRid(id);
             return Result.success(list);
         } catch (Exception ex) {
             ex.printStackTrace();

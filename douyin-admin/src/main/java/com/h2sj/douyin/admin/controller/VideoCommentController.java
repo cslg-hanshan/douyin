@@ -1,19 +1,15 @@
 package com.h2sj.douyin.admin.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.h2sj.douyin.admin.controller.base.BaseController;
 import com.h2sj.douyin.admin.service.VideoCommentService;
 import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
 import com.h2sj.douyin.domain.entity.VideoComment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Serializable;
-
 @RestController
-public class VideoCommentController implements BaseController<VideoComment> {
+public class VideoCommentController {
 
     @Autowired
     private VideoCommentService videoCommentService;
@@ -21,11 +17,8 @@ public class VideoCommentController implements BaseController<VideoComment> {
     @PostMapping(value = "/videocomment",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody VideoComment videocomment){
         try {
-            if (videoCommentService.save(videocomment)){
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLINSERTERROR);
-            }
+            VideoComment save = videoCommentService.save(videocomment);
+            return Result.success(save);
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLINSERTERROR);
@@ -33,12 +26,10 @@ public class VideoCommentController implements BaseController<VideoComment> {
     }
 
     @DeleteMapping(value = "/videocomment/{id}")
-    public Result delete(@PathVariable(value = "id") Serializable id){
+    public Result delete(@PathVariable(value = "id") Long id){
         try {
-            if (id != null && videoCommentService.removeById(id))
-                return Result.success();
-            else
-                return Result.failed(ResultCode.SQLDELETEERROR);
+            videoCommentService.deleteById(id);
+            return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLDELETEERROR);
@@ -48,10 +39,8 @@ public class VideoCommentController implements BaseController<VideoComment> {
     @PutMapping(value = "/videocomment")
     public Result update(@RequestBody VideoComment videocomment) {
         try {
-            if (videoCommentService.updateById(videocomment))
-                return Result.success();
-            else
-                return Result.failed(ResultCode.SQLUPDATEERROR);
+            VideoComment update = videoCommentService.update(videocomment);
+            return Result.success(update);
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -59,9 +48,9 @@ public class VideoCommentController implements BaseController<VideoComment> {
     }
 
     @GetMapping(value = "/videocomment/{id}")
-    public Result findOne(@PathVariable("id") Serializable id) {
+    public Result findOne(@PathVariable("id") Long id) {
         try {
-            VideoComment videocomment = videoCommentService.getById(id);
+            VideoComment videocomment = videoCommentService.findOneById(id);
             return Result.success(videocomment);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -72,23 +61,12 @@ public class VideoCommentController implements BaseController<VideoComment> {
     @GetMapping(value = "/videocomments",produces = "application/json; charset=utf-8")
     public Result findPages(
             @RequestParam(value = "keyword",required = false) String keyword,
-            @RequestParam(value = "page",required = false,defaultValue = "1") Long page,
-            @RequestParam(value = "limit",required = false,defaultValue = "20") Long limit,
-            @RequestParam(value = "orderby",required = false) String orderby
+            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
+            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
+            @RequestParam(value = "span",required = false) String span
     ){
         try {
-            Page<VideoComment> pager = new Page<>(page,limit);
-            QueryWrapper<VideoComment> wrapper = new QueryWrapper<>();
-            if (orderby != null){
-                String[] split = orderby.split(",");
-                if (split[1].toLowerCase().equals("desc"))
-                    wrapper.orderByDesc(split[0]);
-                else
-                    wrapper.orderByAsc(split[0]);
-            }
-            if (keyword != null)
-                wrapper.likeRight("vc_content",keyword);
-            Page<VideoComment> pages = videoCommentService.page(pager, wrapper);
+            Page<VideoComment> pages = videoCommentService.findPages(keyword, page, limit, span);
             return Result.success(pages);
         } catch (Exception ex) {
             ex.printStackTrace();
