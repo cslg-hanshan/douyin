@@ -1,31 +1,28 @@
 package com.h2sj.douyin.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@Entity
-@Table(name = "db_permission")
+@TableName(value = "db_permission")
 public class Permission implements Serializable{
 
     private static final long serialVersionUID = 7780916238946755137L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "p_id")
+    @TableId(value = "p_id",type = IdType.AUTO)
     private Long pId;
 
-    @Column(name = "p_name")
+    @TableField(value = "p_name")
     private String pName;
 
-    @Column(name = "p_url")
+    @TableField(value = "p_url")
     private String pUrl;
 
-    @Column(name = "p_description")
+    @TableField(value = "p_description")
     private String pDescription;
 
-    @Column(name = "p_createdate",columnDefinition = "timestamp")
+    @TableField(value = "p_createdate")
     private String pCreatedate;
 }

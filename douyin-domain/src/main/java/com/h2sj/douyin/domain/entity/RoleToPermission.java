@@ -1,24 +1,23 @@
 package com.h2sj.douyin.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@Entity
-@Table(name = "db_role_to_permission")
+@TableName(value = "db_role_to_permission")
 public class RoleToPermission implements Serializable {
 
     private static final long serialVersionUID = 713967606395229104L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rp_id")
+
+    @TableField(value = "rp_id")
     private Long rpId;
 
-    @Column(name = "r_id")
-    private Long rId;
+    @TableField(value = "role_id")
+    private Long roleId;
 
-    @Column(name = "p_id")
-    private Long pId;
+    @TableField(value = "permission_id")
+    private Long permissionId;
 }

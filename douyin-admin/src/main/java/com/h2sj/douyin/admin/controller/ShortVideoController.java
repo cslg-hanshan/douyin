@@ -5,7 +5,6 @@ import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
 import com.h2sj.douyin.domain.entity.ShortVideo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,11 +16,8 @@ public class ShortVideoController {
     @PostMapping(value = "/shortvideo",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody ShortVideo shortvideo){
         try {
-            if (shortVideoService.save(shortvideo) != null){
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLINSERTERROR);
-            }
+            shortVideoService.save(shortvideo);
+            return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLINSERTERROR);
@@ -31,7 +27,7 @@ public class ShortVideoController {
     @DeleteMapping(value = "/shortvideo/{id}")
     public Result delete(@PathVariable(value = "id") Long id){
         try {
-            shortVideoService.deleteById(id);
+            shortVideoService.removeById(id);
             return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -42,10 +38,8 @@ public class ShortVideoController {
     @PutMapping(value = "/shortvideo")
     public Result update(@RequestBody ShortVideo shortvideo) {
         try {
-            if (shortVideoService.update(shortvideo) != null)
-                return Result.success();
-            else
-                return Result.failed(ResultCode.SQLUPDATEERROR);
+            shortVideoService.updateById(shortvideo);
+            return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -55,7 +49,7 @@ public class ShortVideoController {
     @GetMapping(value = "/shortvideo/{id}")
     public Result findOne(@PathVariable("id") Long id) {
         try {
-            ShortVideo shortvideo = shortVideoService.findOneById(id);
+            ShortVideo shortvideo = shortVideoService.getById(id);
             return Result.success(shortvideo);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -63,19 +57,19 @@ public class ShortVideoController {
         }
     }
 
-    @GetMapping(value = "/shortvideos",produces = "application/json; charset=utf-8")
-    public Result findPages(
-            @RequestParam(value = "keyword",required = false) String keyword,
-            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
-            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
-            @RequestParam(value = "span",required = false) String span
-    ){
-        try {
-            Page<ShortVideo> pages = shortVideoService.findPages(keyword, page, limit, span);
-            return Result.success(pages);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return Result.failed(ResultCode.SQLSELECTERROR);
-        }
-    }
+//    @GetMapping(value = "/shortvideos",produces = "application/json; charset=utf-8")
+//    public Result findPages(
+//            @RequestParam(value = "keyword",required = false) String keyword,
+//            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
+//            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
+//            @RequestParam(value = "span",required = false) String span
+//    ){
+//        try {
+//            Page<ShortVideo> pages = shortVideoService.findPages(keyword, page, limit, span);
+//            return Result.success(pages);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return Result.failed(ResultCode.SQLSELECTERROR);
+//        }
+//    }
 }

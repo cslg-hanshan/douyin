@@ -19,7 +19,6 @@ public class RoleController {
     @PostMapping(value = "/role",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody Role role){
         try {
-            System.out.println(role);
             roleService.save(role);
             return Result.success();
         } catch (Exception ex) {
@@ -31,7 +30,7 @@ public class RoleController {
     @DeleteMapping(value = "/role/{id}")
     public Result delete(@PathVariable(value = "id") Long id){
         try {
-            roleService.deleteById(id);
+            roleService.removeById(id);
             return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -42,10 +41,8 @@ public class RoleController {
     @PutMapping(value = "/role")
     public Result update(@RequestBody Role role) {
         try {
-            if (roleService.update(role) != null)
-                return Result.success();
-            else
-                return Result.failed(ResultCode.SQLUPDATEERROR);
+            roleService.updateById(role);
+            return Result.success();
         } catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -55,7 +52,7 @@ public class RoleController {
     @GetMapping(value = "/role/{id}")
     public Result findOne(@PathVariable("id") Long id) {
         try {
-            Role role = roleService.findOneById(id);
+            Role role = roleService.getById(id);
             return Result.success(role);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -66,7 +63,7 @@ public class RoleController {
     @GetMapping(value = "/roles",produces = "application/json; charset=utf-8")
     public Result findList(){
         try {
-            List<Role> list = roleService.findList();
+            List<Role> list = roleService.list();
             return Result.success(list);
         } catch (Exception ex) {
             ex.printStackTrace();

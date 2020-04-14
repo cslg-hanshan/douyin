@@ -19,11 +19,8 @@ public class PermissionController {
     @PostMapping(value = "/permission",produces = "application/json; charset=utf-8")
     public Result save(@RequestBody Permission permission){
         try {
-            if (permissionService.save(permission) != null){
-                return Result.success();
-            }else {
-                return Result.failed(ResultCode.SQLINSERTERROR);
-            }
+            permissionService.save(permission);
+            return Result.success();
         }catch (Exception ex) {
             ex.printStackTrace();
             return Result.failed(ResultCode.SQLINSERTERROR);
@@ -33,7 +30,7 @@ public class PermissionController {
     @DeleteMapping(value = "/permission/{id}",produces = "application/json; charset=utf-8")
     public Result delete(@PathVariable("id") Long id){
         try {
-            permissionService.deleteById(id);
+            permissionService.removeById(id);
             return Result.success();
         }catch (Exception ex) {
             ex.printStackTrace();
@@ -44,7 +41,7 @@ public class PermissionController {
     @PutMapping(value = "/permission",produces = "application/json; charset=utf-8")
     public Result update(@RequestBody Permission permission){
         try {
-            if (permissionService.update(permission) != null){
+            if (permissionService.updateById(permission)){
                 return Result.success();
             }else {
                 return Result.failed(ResultCode.SQLUPDATEERROR);
@@ -58,7 +55,7 @@ public class PermissionController {
     @GetMapping(value = "/permission/{id}",produces = "application/json; charset=utf-8")
     public Result findOne(@PathVariable("id") Long id){
         try {
-            Permission permission = permissionService.findOneById(id);
+            Permission permission = permissionService.getById(id);
             return Result.success(permission);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -70,20 +67,9 @@ public class PermissionController {
     @GetMapping(value = "/permissions",produces = "application/json; charset=utf-8")
     public Result findPages(){
         try {
-            List<Permission> list = permissionService.findList();
+            List<Permission> list = permissionService.list();
             return Result.success(list);
         } catch (Exception ex) {
-            return Result.failed(ResultCode.SQLSELECTERROR);
-        }
-    }
-
-    @GetMapping(value = "/permissions/role/{id}",produces = "application/json; charset=utf-8")
-    public Result findListByRoleId(@PathVariable(value = "id") Long id){
-        try {
-            List<Permission> list = permissionService.findListByRid(id);
-            return Result.success(list);
-        } catch (Exception ex) {
-            ex.printStackTrace();
             return Result.failed(ResultCode.SQLSELECTERROR);
         }
     }

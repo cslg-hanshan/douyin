@@ -1,46 +1,43 @@
 package com.h2sj.douyin.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@Entity
-@Table(name = "db_member")
+@TableName(value = "db_member")
 public class Member implements Serializable {
 
     private static final long serialVersionUID = -568236713372957034L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "m_id")
+    @TableId(value = "m_id",type = IdType.AUTO)
     private Long mId;
 
-    @Column(name = "m_username",nullable = false,unique = true)
+    @TableField(value = "m_username")
     private String mUsername;
 
-    @Column(name = "m_password",nullable = false)
+    @TableField(value = "m_password")
     private String mPassword;
 
-    @Column(name = "m_Gender")
+    @TableField(value = "m_Gender")
     private String mGender;
 
-    @Column(name = "m_portrait")
+    @TableField(value = "m_portrait")
     private String mPortrait;
 
-    @Column(name = "m_birthday",columnDefinition = "timestamp")
+    @TableField(value = "m_birthday")
     private String mBirthday;
 
-    @Column(name = "m_email")
+    @TableField(value = "m_email")
     private String mEmail;
 
-    @Column(name = "m_phone")
+    @TableField(value = "m_phone")
     private String mPhone;
 
-    @Column(name = "r_id")
-    private Long rId;
-
-    @Column(name = "m_createdate",columnDefinition = "timestamp")
+    @TableField(value = "m_createdate")
     private String mCreatedate;
+
+    @TableField(value = "role_id")
+    private Long roleId;
 }

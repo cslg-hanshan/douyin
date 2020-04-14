@@ -38,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().and().csrf().disable()
 
-                .authorizeRequests().antMatchers("/auth/**","/role/**").permitAll().anyRequest().authenticated()
+                .authorizeRequests()
+                .antMatchers("/auth/**","/swagger-ui.html","/webjars/**","/swagger-resources/**","/v2/**")
+                .permitAll().anyRequest().authenticated()
 
                 .and()
                 .addFilterAt(new JWTAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)

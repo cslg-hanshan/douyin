@@ -1,30 +1,27 @@
 package com.h2sj.douyin.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@Entity
-@Table(name = "db_videocomment")
+@TableName(value = "db_videocomment")
 public class VideoComment implements Serializable {
 
     private static final long serialVersionUID = -9129246514505792379L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vc_id")
+    @TableId(value = "vc_id",type = IdType.AUTO)
     private Long vcId;
 
-    @Column(name = "vc_content")
+    @TableField(value = "vc_content")
     private String vcContent;
 
-    @Column(name = "vc_createdate",columnDefinition = "timestamp")
+    @TableField(value = "vc_createdate")
     private String vcCreatedate;
 
-    @Column(name = "m_id")
-    private Long mId;
+    @TableField(value = "member_id")
+    private Long memberId;
 
-    @Column(name = "sv_id")
-    private Long svId;
+    @TableField(value = "shortvideo_id")
+    private Long shortvideoId;
 }
