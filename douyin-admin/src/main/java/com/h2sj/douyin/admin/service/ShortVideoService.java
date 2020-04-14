@@ -6,5 +6,4 @@ import com.h2sj.douyin.domain.entity.ShortVideo;
 
 public interface ShortVideoService extends IService<ShortVideo> {
     public Page<ShortVideo> findPages(String keyword, Integer page, Integer limit, String span);
-
 }

@@ -3,52 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="53b445c8-00fa-485b-8d84-6f78d88051c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/DouyinAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/DouyinAdminApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/RoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/ShortVideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/ShortVideoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/VideoCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/VideoCommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/VideoReplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/controller/VideoReplyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/runner/DatabaseRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/runner/DatabaseRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/userdetails/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/security/userdetails/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/PermissionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/ShortVideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/ShortVideoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/VideoCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/VideoCommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/VideoReplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/VideoReplyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/MemberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/PermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/PermissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/ShortVideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/ShortVideoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/VideoCommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/VideoCommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/VideoReplyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/java/com/h2sj/douyin/admin/service/impl/VideoReplyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseShortvideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseShortvideo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseVideocomment.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseVideocomment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseVideoreply.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/MemberPraiseVideoreply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/RoleToPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/RoleToPermission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/ShortVideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/ShortVideo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/VideoComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/VideoComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/VideoReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/entity/VideoReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/MemberPraiseShortvideoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/MemberPraiseVideocommentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/MemberPraiseVideoreplyRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/MemberRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/PermissionRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/RoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/RoleToPermissionRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/ShortVideoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/VideoCommentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/douyin-domain/src/main/java/com/h2sj/douyin/domain/repository/VideoReplyRepository.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +100,7 @@
       <updated>1586578799509</updated>
       <workItem from="1586578800810" duration="28680000" />
       <workItem from="1586783643107" duration="4467000" />
-      <workItem from="1586823935721" duration="24179000" />
+      <workItem from="1586823935721" duration="24974000" />
     </task>
     <servers />
   </component>

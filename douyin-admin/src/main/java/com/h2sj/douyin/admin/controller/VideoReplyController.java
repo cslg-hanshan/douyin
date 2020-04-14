@@ -1,5 +1,6 @@
 package com.h2sj.douyin.admin.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.h2sj.douyin.admin.service.VideoReplyService;
 import com.h2sj.douyin.common.utils.Result;
 import com.h2sj.douyin.common.utils.ResultCode;
@@ -58,19 +59,19 @@ public class VideoReplyController {
         }
     }
 
-//    @GetMapping(value = "/videoreplys",produces = "application/json; charset=utf-8")
-//    public Result findPages(
-//            @RequestParam(value = "keyword",required = false) String keyword,
-//            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
-//            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
-//            @RequestParam(value = "span",required = false) String span
-//    ){
-//        try {
-//            Page<VideoReply> pages = videoReplyService.findPages(keyword, page, limit, span);
-//            return Result.success(pages);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return Result.failed(ResultCode.SQLSELECTERROR);
-//        }
-//    }
+    @GetMapping(value = "/videoreplys",produces = "application/json; charset=utf-8")
+    public Result findPages(
+            @RequestParam(value = "keyword",required = false) String keyword,
+            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
+            @RequestParam(value = "limit",required = false,defaultValue = "20") Integer limit,
+            @RequestParam(value = "span",required = false) String span
+    ){
+        try {
+            Page<VideoReply> pages = videoReplyService.findPages(keyword, page, limit, span);
+            return Result.success(pages);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return Result.failed(ResultCode.SQLSELECTERROR);
+        }
+    }
 }
